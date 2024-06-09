@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('alamat');
-            $table->foreignId('jurusan_id')->constrained('jurusans')->cascadeOnDelete();
+            $table->unsignedBigInteger('jurusan_id');
+            $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('cascade');
+           // $table->foreignId('jurusan_id')->constrained('jurusans')->cascadeOnDelete();
             $table->timestamps();
         });
     }
